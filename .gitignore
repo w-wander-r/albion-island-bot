@@ -7,3 +7,5 @@
 .python-version
 
 *.png
+
+.uv.lock
