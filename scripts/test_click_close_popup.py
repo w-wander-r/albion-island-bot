@@ -25,7 +25,6 @@ from albion_bot.vision.detector import PopupDetector
 
 
 def main():
-    time.sleep(1)  # give user a moment to alt-tab to game window
     capture = get_capture_backend()
     input_ctl = get_input_backend()
     detector = PopupDetector()
