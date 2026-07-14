@@ -1,0 +1,1 @@
+"""Computer vision system for game screen analysis."""

@@ -1,2 +1,1 @@
-uv pip install requirements.txt
-sudo ydotoold
+uv pip install -r requirements.txt --no-build-isolation
