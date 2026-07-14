@@ -4,15 +4,9 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = [
-    "bezier>=2024.6.20",
-    "loguru>=0.7.3",
-    "mss>=10.2.0",
-    "numpy>=2.5.1",
-    "opencv-python>=5.0.0.93",
-    "pillow>=12.3.0",
-    "py-getch>=1.0.1",
-    "pynput>=1.8.2",
-]
-[tool.uv.extra-build-dependencies]
-bezier = ["setuptools<70"]
+dependencies = []
+[tool.uv]
+package = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
