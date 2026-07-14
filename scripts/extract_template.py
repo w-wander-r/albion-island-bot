@@ -12,12 +12,14 @@ second click. Press 'r' to reset your two points if you misclick, or
 """
 import sys
 from pathlib import Path
+from time import sleep, time
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 import cv2
 
 from albion_bot.platform.capture import get_capture_backend
+from albion_bot.vision.window_locator import WindowLocator
 
 if len(sys.argv) < 2:
     print("Usage: python extract_template.py <output_filename.png>")
@@ -33,6 +35,7 @@ def on_mouse(event, x, y, flags, param):
 
 
 def main():
+    sleep(1)  # give the user a moment to switch to the game window
     backend = get_capture_backend()
     screenshot = backend.capture()
 
@@ -73,6 +76,16 @@ def main():
 
     cv2.imwrite(str(output_path), crop)
     print(f"Saved {crop.shape[1]}x{crop.shape[0]} crop to {output_path}")
+    print(f"Absolute screenshot coords: top-left=({x1},{y1}) bottom-right=({x2},{y2})")
+
+    locator = WindowLocator()
+    origin = locator.locate(screenshot)
+    if origin:
+        print(f"Window origin: ({origin.x}, {origin.y})")
+        print(f"Offset from window origin: top-left=({x1 - origin.x},{y1 - origin.y}) "
+              f"bottom-right=({x2 - origin.x},{y2 - origin.y})")
+    else:
+        print("(Could not locate window origin to compute a relative offset)")
 
 
 if __name__ == "__main__":
