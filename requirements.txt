@@ -1,8 +1,4 @@
-opencv-python>=4.8.0
-numpy>=1.24.0
-mss>=9.0.0
-pynput>=1.7.0
-bezier>=2023.7.28
-pillow>=10.0.0
-loguru>=0.7.0
-py-getch>=1.0.1
+opencv-python
+numpy
+dbus-next
+mss
